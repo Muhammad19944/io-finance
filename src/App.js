@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import {
 	BrowserRouter as Router,
 	Switch,
@@ -10,37 +10,6 @@ import Main from "layout/Main";
 import Auth from "layout/Auth";
 
 export default function App() {
-	let [reminders, setReminders] = useState(null);
-	let [error, setError] = useState();
-
-	useEffect(() => {
-		let isCurrent = true;
-		setReminders(null);
-		let url = `/api/movies`;
-
-		fetch(url)
-			.then((res) => res.json())
-			.then((json) => {
-				if (isCurrent) {
-					setReminders(json.reminders);
-
-					console.log(json);
-				}
-			})
-			.catch((e) => {
-				if (isCurrent) {
-					setError(
-						"We couldn't load your reminders. Try again soon."
-					);
-					console.error(e);
-				}
-			});
-
-		return () => {
-			isCurrent = false;
-		};
-	}, []);
-
 	return (
 		<Router>
 			<div>
