@@ -2,12 +2,12 @@ import React from "react";
 import ReactDOM from "react-dom";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import server from "server/index";
+import makeServer from 'server/index'
 
 import "assets/css/index.css";
 
 if (process.env.NODE_ENV === "development") {
-	server({ environment: "development" });
+	makeServer({ environment: "development" })
 }
 
 ReactDOM.render(
